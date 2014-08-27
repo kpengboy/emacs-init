@@ -127,6 +127,10 @@
 
 ;;; Change log:
 ;;
+;; 2014/08/27
+;;      * Kevin Peng <kkpengboy@gmail.com>
+;;      Keep multi-term buffer list make multi-term-next/prev can switch temrinal buffer even terminal buffer's name is changed. 
+;;
 ;; 2014/07/21
 ;;      * Andy Stewart
 ;;      Bind C-m with `term-send-return' instead `term-send-input' to fixed bug that
