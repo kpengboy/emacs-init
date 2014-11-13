@@ -25,6 +25,7 @@
 (let ((default-directory "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 (require 'multi-term)
+(require 'smart-tabs-mode)
 
 ; multi-term keybindings
 (setq term-unbind-key-list '())
@@ -49,3 +50,10 @@
 (unless (display-graphic-p)
   (set-face-foreground 'mode-line "green")
   (set-face-foreground 'mode-line-inactive "white"))
+
+; C/C++ customization
+(smart-tabs-insinuate 'c 'c++)
+(add-hook 'c-mode-common-hook
+             (lambda ()
+               (setq indent-tabs-mode t)))
+(setq c-default-style "k&r")
