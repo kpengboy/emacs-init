@@ -1,4 +1,4 @@
-;; Copyright (c) 2014 Kevin Peng
+;; Copyright (c) 2014-2015 Kevin Peng
 ;; All rights reserved.
 ;;
 ;; Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,4 @@
 
 ; C/C++ customization
 (smart-tabs-insinuate 'c 'c++)
-(add-hook 'c-mode-common-hook
-             (lambda ()
-               (setq indent-tabs-mode t)))
 (setq c-default-style "k&r")
