@@ -26,6 +26,7 @@
   (normal-top-level-add-subdirs-to-load-path))
 (require 'multi-term)
 (require 'smart-tabs-mode)
+(require 'fill-column-indicator)
 
 ; multi-term keybindings
 (setq term-unbind-key-list '())
