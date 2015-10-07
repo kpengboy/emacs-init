@@ -45,6 +45,7 @@
 (put 'upcase-region 'disabled nil)
 (setq column-number-mode t)
 (setq-default indent-tabs-mode nil)
+(setq-default scroll-preserve-screen-position t)
 
 ; Highlight the current buffer unless in graphical mode (where the current
 ; buffer is already highlighted)
@@ -68,3 +69,16 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+; Make something for scrolling the screen
+(unless (fboundp 'scroll-up-line)
+  (defun scroll-up-line (&optional args)
+    (interactive "P")
+    (scroll-up (or args 1)))
+  (defun scroll-down-line (&optional args)
+    (interactive "P")
+    (scroll-down (or args 1))))
+(global-set-key (kbd "s-v") 'scroll-up-line)
+(global-set-key (kbd "M-<down>") 'scroll-up-line)
+(global-set-key (kbd "s-M-v") 'scroll-down-line)
+(global-set-key (kbd "M-<up>") 'scroll-down-line)
