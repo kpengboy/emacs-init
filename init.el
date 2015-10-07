@@ -25,6 +25,7 @@
 (let ((default-directory "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 (require 'multi-term)
+(require 'recentf)
 (require 'smart-tabs-mode)
 (require 'fill-column-indicator)
 
@@ -82,3 +83,7 @@
 (global-set-key (kbd "M-<down>") 'scroll-up-line)
 (global-set-key (kbd "s-M-v") 'scroll-down-line)
 (global-set-key (kbd "M-<up>") 'scroll-down-line)
+
+; Get a list of recent files
+(recentf-mode 1)
+(global-set-key (kbd "C-x M-r") 'recentf-open-files)
