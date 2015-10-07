@@ -44,6 +44,7 @@
 
 ; Misc.
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 (setq column-number-mode t)
 (setq-default indent-tabs-mode nil)
 (setq-default scroll-preserve-screen-position t)
