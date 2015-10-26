@@ -28,6 +28,12 @@
 (require 'recentf)
 (require 'smart-tabs-mode)
 (require 'fill-column-indicator)
+(autoload 'zap-up-to-char "misc"
+  "Kill up to, but not including ARGth occurrence of CHAR.
+Case is ignored if `case-fold-search' is non-nil in the current buffer.
+Goes backward if ARG is negative; error if CHAR not found.
+Ignores CHAR at point."
+  'interactive)
 
 ; multi-term keybindings
 (setq term-unbind-key-list '())
@@ -88,3 +94,6 @@
 ; Get a list of recent files
 (recentf-mode 1)
 (global-set-key (kbd "C-x M-r") 'recentf-open-files)
+
+; Make keybinding for zap-up-to-char
+(global-set-key (kbd "M-Z") 'zap-up-to-char)
