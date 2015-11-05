@@ -25,8 +25,8 @@
 (let ((default-directory "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 (require 'multi-term)
-(require 'recentf)
 (require 'smart-tabs-mode)
+(require 'recentf)
 (require 'fill-column-indicator)
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.
@@ -36,7 +36,7 @@ Ignores CHAR at point."
   'interactive)
 
 ; multi-term keybindings
-(setq term-unbind-key-list '())
+(setq term-unbind-key-list '("C-x" "M-x"))
 (setq term-bind-key-alist
       `(("C-c c" . multi-term)
 	("C-c p" . multi-term-prev)
@@ -46,7 +46,8 @@ Ignores CHAR at point."
 		("C-c M-v" . scroll-down-command))
 	    '(("C-c C-v" . scroll-up)
 	      ("C-c M-v" . scroll-down)))
-	("C-c M-x" . execute-extended-command)))
+        ("C-c C-x" . term-send-raw)
+        ("C-c M-x" . term-send-raw-meta)))
 
 ; Misc.
 (put 'upcase-region 'disabled nil)
