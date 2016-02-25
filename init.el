@@ -1,4 +1,4 @@
-;; Copyright (c) 2014-2015 Kevin Peng
+;; Copyright (c) 2014-2016 Kevin Peng
 ;; All rights reserved.
 ;;
 ;; Redistribution and use in source and binary forms, with or without
@@ -98,3 +98,5 @@ Ignores CHAR at point."
 
 ; Make keybinding for zap-up-to-char
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
+
+(add-to-list 'auto-mode-alist '("\\.tcc\\'" . c++-mode))
