@@ -100,3 +100,8 @@ Ignores CHAR at point."
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
 (add-to-list 'auto-mode-alist '("\\.tcc\\'" . c++-mode))
+
+; Don't display splash screen if we already have another file open
+(dolist (arg (cdr command-line-args) nil)
+  (unless (string-prefix-p "-" arg)
+    (setq inhibit-startup-screen t)))
