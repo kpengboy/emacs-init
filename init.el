@@ -39,13 +39,13 @@ Ignores CHAR at point."
 (setq term-unbind-key-list '("C-x" "M-x"))
 (setq term-bind-key-alist
       `(("C-c c" . multi-term)
-	("C-c p" . multi-term-prev)
-	("C-c n" . multi-term-next)
-	,@(if (fboundp 'scroll-up-command)
-	      '(("C-c C-v" . scroll-up-command)
-		("C-c M-v" . scroll-down-command))
-	    '(("C-c C-v" . scroll-up)
-	      ("C-c M-v" . scroll-down)))
+    ("C-c p" . multi-term-prev)
+    ("C-c n" . multi-term-next)
+    ,@(if (fboundp 'scroll-up-command)
+          '(("C-c C-v" . scroll-up-command)
+        ("C-c M-v" . scroll-down-command))
+        '(("C-c C-v" . scroll-up)
+          ("C-c M-v" . scroll-down)))
         ("C-c C-x" . term-send-raw)
         ("C-c M-x" . term-send-raw-meta)))
 
@@ -55,6 +55,7 @@ Ignores CHAR at point."
 (setq column-number-mode t)
 (setq-default indent-tabs-mode nil)
 (setq-default scroll-preserve-screen-position t)
+(setq-default buffer-file-coding-system 'utf-8-unix)
 
 ; Highlight the current buffer unless in graphical mode (where the current
 ; buffer is already highlighted)
