@@ -105,3 +105,10 @@ Ignores CHAR at point."
 ; Don't display splash screen if we already have another file open
 (unless (null (cdr command-line-args))
   (setq inhibit-startup-screen t))
+
+; Define function to shutdown emacs server instance
+(defun server-shutdown ()
+  "Save buffers, Quit, and Shutdown (kill) server"
+  (interactive)
+  (save-some-buffers)
+  (kill-emacs))
