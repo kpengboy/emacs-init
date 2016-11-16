@@ -103,6 +103,5 @@ Ignores CHAR at point."
 (add-to-list 'auto-mode-alist '("\\.tcc\\'" . c++-mode))
 
 ; Don't display splash screen if we already have another file open
-(dolist (arg (cdr command-line-args) nil)
-  (unless (string-prefix-p "-" arg)
-    (setq inhibit-startup-screen t)))
+(unless (null (cdr command-line-args))
+  (setq inhibit-startup-screen t))
