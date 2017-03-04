@@ -1,0 +1,7 @@
+*~
+*.elc
+/auto-save-list/
+/session.*
+/recentf
+/tramp
+/url/cache
