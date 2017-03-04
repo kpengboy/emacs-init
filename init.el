@@ -1,4 +1,4 @@
-;; Copyright (c) 2014-2016 Kevin Peng
+;; Copyright (c) 2014-2017 Kevin Peng
 ;; All rights reserved.
 ;;
 ;; Redistribution and use in source and binary forms, with or without
@@ -103,8 +103,9 @@ Ignores CHAR at point."
 (add-to-list 'auto-mode-alist '("\\.tcc\\'" . c++-mode))
 
 ; Don't display splash screen if we already have another file open
-(unless (null (cdr command-line-args))
-  (setq inhibit-startup-screen t))
+(dolist (arg (cdr command-line-args) nil)
+  (unless (string-prefix-p "-" arg)
+    (setq inhibit-startup-screen t)))
 
 ; Define function to shutdown emacs server instance
 (defun server-shutdown ()
