@@ -111,3 +111,6 @@ Ignores CHAR at point."
   (interactive)
   (save-some-buffers)
   (kill-emacs))
+
+(if (file-readable-p "~/.emacs.d/site.el")
+    (load "~/.emacs.d/site.el"))
