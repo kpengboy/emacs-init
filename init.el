@@ -53,6 +53,7 @@ Ignores CHAR at point."
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (setq column-number-mode t)
+(setq dired-dwim-target t)
 (setq-default indent-tabs-mode nil)
 (setq-default scroll-preserve-screen-position t)
 (setq-default buffer-file-coding-system 'utf-8-unix)
