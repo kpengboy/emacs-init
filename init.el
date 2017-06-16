@@ -35,7 +35,7 @@ Goes backward if ARG is negative; error if CHAR not found.
 Ignores CHAR at point."
   'interactive)
 
-; multi-term keybindings
+;; multi-term keybindings
 (setq term-unbind-key-list '("C-x" "M-x"))
 (setq term-bind-key-alist
       `(("C-c c" . multi-term)
@@ -49,7 +49,7 @@ Ignores CHAR at point."
         ("C-c C-x" . term-send-raw)
         ("C-c M-x" . term-send-raw-meta)))
 
-; Misc.
+;; Misc.
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (setq column-number-mode t)
@@ -58,13 +58,13 @@ Ignores CHAR at point."
 (setq-default scroll-preserve-screen-position t)
 (setq-default buffer-file-coding-system 'utf-8-unix)
 
-; Highlight the current buffer unless in graphical mode (where the current
-; buffer is already highlighted)
+;; Highlight the current buffer unless in graphical mode (where the current
+;; buffer is already highlighted)
 (unless (display-graphic-p)
   (set-face-foreground 'mode-line "green")
   (set-face-foreground 'mode-line-inactive "white"))
 
-; C/C++ customization
+;; C/C++ customization
 (smart-tabs-insinuate 'c 'c++)
 (setq c-default-style "k&r")
 
@@ -81,7 +81,7 @@ Ignores CHAR at point."
  ;; If there is more than one, they won't work right.
  )
 
-; Make something for scrolling the screen
+;; Make something for scrolling the screen
 (unless (fboundp 'scroll-up-line)
   (defun scroll-up-line (&optional args)
     (interactive "P")
@@ -94,19 +94,19 @@ Ignores CHAR at point."
 (global-set-key (kbd "s-M-v") 'scroll-down-line)
 (global-set-key (kbd "M-<up>") 'scroll-down-line)
 
-; Get a list of recent files
+;; Get a list of recent files
 (recentf-mode 1)
 (global-set-key (kbd "C-x M-r") 'recentf-open-files)
 
-; Make keybinding for zap-up-to-char
+;; Make keybinding for zap-up-to-char
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
-; Don't display splash screen if we already have another file open
+;; Don't display splash screen if we already have another file open
 (dolist (arg (cdr command-line-args) nil)
   (unless (string-prefix-p "-" arg)
     (setq inhibit-startup-screen t)))
 
-; Define function to shutdown emacs server instance
+;; Define function to shutdown emacs server instance
 (defun server-shutdown ()
   "Save buffers, Quit, and Shutdown (kill) server"
   (interactive)
