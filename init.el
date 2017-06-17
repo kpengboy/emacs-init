@@ -101,6 +101,10 @@ Ignores CHAR at point."
 ;; Make keybinding for zap-up-to-char
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
+;; Use ibuffer as my buffer list
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(add-hook 'ibuffer-mode-hook 'ibuffer-auto-mode)
+
 ;; Don't display splash screen if we already have another file open
 (dolist (arg (cdr command-line-args) nil)
   (unless (string-prefix-p "-" arg)
