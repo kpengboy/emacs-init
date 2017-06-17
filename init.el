@@ -26,7 +26,6 @@
   (normal-top-level-add-subdirs-to-load-path))
 (require 'multi-term)
 (require 'smart-tabs-mode)
-(require 'recentf)
 (require 'fill-column-indicator)
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.
