@@ -57,11 +57,15 @@ Ignores CHAR at point."
 (setq-default scroll-preserve-screen-position t)
 (setq-default buffer-file-coding-system 'utf-8-unix)
 
-;; Highlight the current buffer unless in graphical mode (where the current
-;; buffer is already highlighted)
-(unless (display-graphic-p)
-  (set-face-foreground 'mode-line "green")
-  (set-face-foreground 'mode-line-inactive "white"))
+;; Highlight the active window when using inferior terminals that don't support
+;; grayscale
+(defun my-set-highlight-active-window (frame)
+  (unless (display-grayscale-p (frame-terminal frame))
+    (set-face-foreground 'mode-line "green" frame)
+    (set-face-foreground 'mode-line-inactive "white" frame)))
+(add-hook 'after-make-frame-functions 'my-set-highlight-active-window)
+(add-hook 'window-setup-hook
+          (lambda () (my-set-highlight-active-window (selected-frame))))
 
 ;; C/C++ customization
 (smart-tabs-insinuate 'c 'c++)
