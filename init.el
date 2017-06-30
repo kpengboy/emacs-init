@@ -106,6 +106,7 @@ Ignores CHAR at point."
 
 ;; Use ibuffer as my buffer list
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(setq ibuffer-expert t)
 (add-hook 'ibuffer-mode-hook 'ibuffer-auto-mode)
 
 ;; Don't display splash screen if we already have another file open
