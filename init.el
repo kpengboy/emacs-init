@@ -121,5 +121,9 @@ Ignores CHAR at point."
   (save-some-buffers)
   (kill-emacs))
 
+;; Use ido-mode for buffer completion
+(ido-mode 'buffers)
+(setq ido-enable-flex-matching t)
+
 (if (file-readable-p "~/.emacs.d/site.el")
     (load "~/.emacs.d/site.el"))
