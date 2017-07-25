@@ -105,7 +105,7 @@ Ignores CHAR at point."
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
 ;; Use ibuffer as my buffer list
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(substitute-key-definition 'list-buffers 'ibuffer global-map)
 (setq ibuffer-expert t)
 (add-hook 'ibuffer-mode-hook 'ibuffer-auto-mode)
 
