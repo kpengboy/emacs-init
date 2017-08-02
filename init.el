@@ -28,6 +28,7 @@
 (require 'smart-tabs-mode)
 (require 'fill-column-indicator)
 (require 'undo-tree)
+(require 'delight)
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.
 Case is ignored if `case-fold-search' is non-nil in the current buffer.
@@ -126,7 +127,8 @@ Ignores CHAR at point."
 (ido-mode 'buffers)
 (setq ido-enable-flex-matching t)
 
-;; Use undo-tree everywhere
+;; Use undo-tree everywhere, and don't have it pollute the mode line
+(delight 'undo-tree-mode nil 'undo-tree)
 (global-undo-tree-mode)
 
 (if (file-readable-p "~/.emacs.d/site.el")
