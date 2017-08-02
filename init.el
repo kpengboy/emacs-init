@@ -27,6 +27,7 @@
 (require 'multi-term)
 (require 'smart-tabs-mode)
 (require 'fill-column-indicator)
+(require 'undo-tree)
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.
 Case is ignored if `case-fold-search' is non-nil in the current buffer.
@@ -124,6 +125,9 @@ Ignores CHAR at point."
 ;; Use ido-mode for buffer completion
 (ido-mode 'buffers)
 (setq ido-enable-flex-matching t)
+
+;; Use undo-tree everywhere
+(global-undo-tree-mode)
 
 (if (file-readable-p "~/.emacs.d/site.el")
     (load "~/.emacs.d/site.el"))
