@@ -29,6 +29,7 @@
 (require 'fill-column-indicator)
 (require 'undo-tree)
 (require 'delight)
+(require 'puppet-mode)
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.
 Case is ignored if `case-fold-search' is non-nil in the current buffer.
