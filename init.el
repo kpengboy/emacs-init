@@ -39,14 +39,11 @@ Ignores CHAR at point."
 ;; multi-term keybindings
 (setq term-unbind-key-list '("C-x" "M-x"))
 (setq term-bind-key-alist
-      `(("C-c c" . multi-term)
+      '(("C-c c" . multi-term)
         ("C-c p" . multi-term-prev)
         ("C-c n" . multi-term-next)
-        ,@(if (fboundp 'scroll-up-command)
-              '(("C-c C-v" . scroll-up-command)
-                ("C-c M-v" . scroll-down-command))
-            '(("C-c C-v" . scroll-up)
-              ("C-c M-v" . scroll-down)))
+        ("C-c C-v" . scroll-up-command)
+        ("C-c M-v" . scroll-down-command)
         ("C-c C-x" . term-send-raw)
         ("C-c M-x" . term-send-raw-meta)))
 
@@ -87,13 +84,6 @@ Ignores CHAR at point."
  )
 
 ;; Make something for scrolling the screen
-(unless (fboundp 'scroll-up-line)
-  (defun scroll-up-line (&optional args)
-    (interactive "P")
-    (scroll-up (or args 1)))
-  (defun scroll-down-line (&optional args)
-    (interactive "P")
-    (scroll-down (or args 1))))
 (global-set-key (kbd "s-v") 'scroll-up-line)
 (global-set-key (kbd "M-<down>") 'scroll-up-line)
 (global-set-key (kbd "s-M-v") 'scroll-down-line)
