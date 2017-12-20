@@ -30,6 +30,7 @@
 (require 'undo-tree)
 (require 'delight)
 (require 'puppet-mode)
+(require 'multi-web-mode)
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.
 Case is ignored if `case-fold-search' is non-nil in the current buffer.
@@ -121,6 +122,16 @@ Ignores CHAR at point."
 ;; Use undo-tree everywhere, and don't have it pollute the mode line
 (delight 'undo-tree-mode nil 'undo-tree)
 (global-undo-tree-mode)
+
+;; Use multi-web-mode
+(setq mweb-default-major-mode 'html-mode)
+(setq mweb-tags
+      '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+        (js-mode  "<script[^>]*>" "</script>")
+        (css-mode "<style[^>]*>" "</style>")))
+(setq mweb-filename-extensions
+      '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+(multi-web-global-mode 1)
 
 (if (file-readable-p "~/.emacs.d/site.el")
     (load "~/.emacs.d/site.el"))
