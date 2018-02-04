@@ -1,4 +1,4 @@
-;; Copyright (c) 2014-2017 Kevin Peng
+;; Copyright (c) 2014-2018 Kevin Peng
 ;; All rights reserved.
 ;;
 ;; Redistribution and use in source and binary forms, with or without
@@ -39,11 +39,13 @@ Ignores CHAR at point."
   'interactive)
 
 ;; multi-term keybindings
-(setq term-unbind-key-list '("C-x" "M-x"))
+(setq term-unbind-key-list '("C-x" "M-x" "C-b"))
 (setq term-bind-key-alist
-      '(("C-c c" . multi-term)
-        ("C-c p" . multi-term-prev)
-        ("C-c n" . multi-term-next)
+      '(("C-b c" . multi-term)
+        ("C-b p" . multi-term-prev)
+        ("C-b n" . multi-term-next)
+        ("C-b [" . term-line-mode)
+        ("C-b C-b" . term-send-raw)
         ("C-c C-v" . scroll-up-command)
         ("C-c M-v" . scroll-down-command)
         ("C-c C-x" . term-send-raw)
