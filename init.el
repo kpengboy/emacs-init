@@ -70,7 +70,7 @@ Ignores CHAR at point."
           (lambda () (my-set-highlight-active-window (selected-frame))))
 
 ;; C/C++ customization
-(setq c-default-style "k&r")
+(setq c-default-style "stroustrup")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
