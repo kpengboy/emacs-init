@@ -70,7 +70,6 @@ Ignores CHAR at point."
           (lambda () (my-set-highlight-active-window (selected-frame))))
 
 ;; C/C++ customization
-(smart-tabs-insinuate 'c 'c++)
 (setq c-default-style "k&r")
 
 (custom-set-variables
