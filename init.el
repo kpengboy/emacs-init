@@ -71,13 +71,24 @@ Ignores CHAR at point."
 
 ;; C/C++ customization
 (setq c-default-style "stroustrup")
+;; Enable smart tabs in c-mode and c++-mode when the file/directory local
+;; variable `use-smart-tabs` is t
+(defvar-local use-smart-tabs nil)
+(add-hook 'hack-local-variables-hook
+          (lambda ()
+            (if (and (memq major-mode '(c-mode c++-mode))
+                     use-smart-tabs)
+                (progn
+                  (smart-tabs-mode-enable)
+                  (smart-tabs-advice c-indent-line c-basic-offset)
+                  (smart-tabs-advice c-indent-region c-basic-offset)))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((smart-tabs-mode)))))
+ '(safe-local-variable-values (quote ((use-smart-tabs . t)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
