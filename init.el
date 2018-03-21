@@ -144,5 +144,8 @@ Ignores CHAR at point."
       '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
 
+;; I type M-x make too often, so I gave up trying to fight it
+(defalias 'make 'compile)
+
 (if (file-readable-p "~/.emacs.d/site.el")
     (load "~/.emacs.d/site.el"))
