@@ -50,7 +50,7 @@ Ignores CHAR at point."
         ("C-c C-x" . term-send-raw)
         ("C-c M-x" . term-send-raw-meta)))
 
-;; Misc.
+;; Misc variables
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (setq column-number-mode t)
@@ -58,6 +58,15 @@ Ignores CHAR at point."
 (setq-default indent-tabs-mode nil)
 (setq-default scroll-preserve-screen-position t)
 (setq-default buffer-file-coding-system 'utf-8-unix)
+
+;; Misc keybindings
+(defun backward-whitespace (arg)
+  "Like `forward-whitespace', but moves backward."
+  (interactive "^p")
+  (forward-whitespace (* -1 arg)))
+(global-set-key (kbd "M-Z") 'zap-up-to-char)
+(global-set-key (kbd "M-F") 'forward-whitespace)
+(global-set-key (kbd "M-B") 'backward-whitespace)
 
 ;; Highlight the active window when using inferior terminals that don't support
 ;; grayscale
@@ -107,9 +116,6 @@ Ignores CHAR at point."
 ;; Get a list of recent files
 (recentf-mode 1)
 (global-set-key (kbd "C-x M-r") 'recentf-open-files)
-
-;; Make keybinding for zap-up-to-char
-(global-set-key (kbd "M-Z") 'zap-up-to-char)
 
 ;; Use ibuffer as my buffer list
 (substitute-key-definition 'list-buffers 'ibuffer global-map)
