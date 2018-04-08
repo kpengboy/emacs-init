@@ -99,8 +99,10 @@ Ignores CHAR at point."
 ;; Make something for scrolling the screen
 (global-set-key (kbd "s-v") 'scroll-up-line)
 (global-set-key (kbd "M-<down>") 'scroll-up-line)
+(global-set-key (kbd "ESC <down>") 'scroll-up-line)
 (global-set-key (kbd "s-M-v") 'scroll-down-line)
 (global-set-key (kbd "M-<up>") 'scroll-down-line)
+(global-set-key (kbd "ESC <up>") 'scroll-down-line)
 
 ;; Get a list of recent files
 (recentf-mode 1)
