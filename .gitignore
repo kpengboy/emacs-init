@@ -3,5 +3,6 @@
 /auto-save-list/
 /session.*
 /recentf
+/site.el
 /tramp
 /url/cache
