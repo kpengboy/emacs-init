@@ -1,6 +1,7 @@
 *~
 *.elc
 /auto-save-list/
+/elpa/
 /session.*
 /recentf
 /site.el

@@ -21,15 +21,34 @@
 ;; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 ;; POSSIBILITY OF SUCH DAMAGE.
 
+(require 'cl-lib)
+(require 'package)
+
+(nconc package-archives '(("melpa" . "https://melpa.org/packages/")))
+(package-initialize)
+
+(defconst my-managed-packages
+  '(;;multi-term
+    smart-tabs-mode ;;fill-column-indicator undo-tree delight
+    puppet-mode multi-web-mode)
+  "A list of packages to ensure are installed at launch.")
+
+(unless (cl-every #'package-installed-p my-managed-packages)
+  (package-refresh-contents)
+  (dolist (p my-managed-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
+
+(dolist (p my-managed-packages)
+  (eval `(require ',p)))
+
 (let ((default-directory "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 (require 'multi-term)
-(require 'smart-tabs-mode)
 (require 'fill-column-indicator)
 (require 'undo-tree)
 (require 'delight)
-(require 'puppet-mode)
-(require 'multi-web-mode)
+
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.
 Case is ignored if `case-fold-search' is non-nil in the current buffer.
