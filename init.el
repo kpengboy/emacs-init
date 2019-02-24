@@ -39,9 +39,6 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-(dolist (p my-managed-packages)
-  (eval `(require ',p)))
-
 (let ((default-directory "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 (require 'multi-term)
