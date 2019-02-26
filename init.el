@@ -27,15 +27,15 @@
 (nconc package-archives '(("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
-(defconst my-managed-packages
+(setq package-selected-packages
   '(;;multi-term
-    smart-tabs-mode ;;fill-column-indicator undo-tree delight
-    puppet-mode multi-web-mode)
-  "A list of packages to ensure are installed at launch.")
+    smart-tabs-mode ;;fill-column-indicator
+    undo-tree delight
+    puppet-mode multi-web-mode))
 
-(unless (cl-every #'package-installed-p my-managed-packages)
+(unless (cl-every #'package-installed-p package-selected-packages)
   (package-refresh-contents)
-  (dolist (p my-managed-packages)
+  (dolist (p package-selected-packages)
     (when (not (package-installed-p p))
       (package-install p))))
 
@@ -43,8 +43,6 @@
   (normal-top-level-add-subdirs-to-load-path))
 (require 'multi-term)
 (require 'fill-column-indicator)
-(require 'undo-tree)
-(require 'delight)
 
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.
