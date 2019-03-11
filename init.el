@@ -29,9 +29,13 @@
 
 (setq package-selected-packages
   '(;;multi-term
-    smart-tabs-mode ;;fill-column-indicator
-    undo-tree delight
-    puppet-mode multi-web-mode))
+    smart-tabs-mode
+    ;;fill-column-indicator
+    undo-tree
+    delight
+    puppet-mode
+    multi-web-mode
+    rust-mode))
 
 (unless (cl-every #'package-installed-p package-selected-packages)
   (package-refresh-contents)
