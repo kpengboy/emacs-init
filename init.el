@@ -35,7 +35,9 @@
     delight
     puppet-mode
     multi-web-mode
-    rust-mode))
+    rust-mode
+    tide
+    company))
 
 (unless (cl-every #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -172,6 +174,19 @@ Ignores CHAR at point."
 
 ;; I type M-x make too often, so I gave up trying to fight it
 (defalias 'make 'compile)
+
+;; Setup for tide-mode
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
+;; aligns annotation to right hand side
+(setq company-tooltip-align-annotations t)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 (if (file-readable-p "~/.emacs.d/site.el")
     (load "~/.emacs.d/site.el"))
