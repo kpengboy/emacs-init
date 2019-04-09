@@ -188,5 +188,15 @@ Ignores CHAR at point."
 (setq company-tooltip-align-annotations t)
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
+(defun activate-nodeenv (path)
+  (interactive "DNodeenv directory: ")
+  (let ((realpath (directory-file-name (file-truename path))))
+    (setq tide-tsserver-process-environment
+          (append tide-tsserver-process-environment
+                  (list (concat "NODE_VIRTUAL_ENV=" realpath)
+                        (concat "PATH=" realpath ":" (getenv "PATH"))
+                        (concat "NPM_CONFIG_PREFIX=" realpath))))
+    (setq tide-node-executable (concat realpath "/bin/node"))))
+
 (if (file-readable-p "~/.emacs.d/site.el")
     (load "~/.emacs.d/site.el"))
