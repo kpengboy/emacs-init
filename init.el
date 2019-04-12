@@ -190,6 +190,7 @@ Ignores CHAR at point."
 
 (defun activate-nodeenv (path)
   (interactive "DNodeenv directory: ")
+  (require 'tide)
   (let ((realpath (directory-file-name (file-truename path))))
     (setq tide-tsserver-process-environment
           (append tide-tsserver-process-environment
