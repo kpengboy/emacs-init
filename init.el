@@ -28,7 +28,7 @@
 (package-initialize)
 
 (setq package-selected-packages
-  '(;;multi-term
+  '(multi-term
     smart-tabs-mode
     ;;fill-column-indicator
     undo-tree
