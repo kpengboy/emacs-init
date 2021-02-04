@@ -1,4 +1,4 @@
-;; Copyright (c) 2014-2019 Kevin Peng and contributors
+;; Copyright (c) 2014-2021 Kevin Peng and contributors
 ;;
 ;; Redistribution and use in source and binary forms, with or without
 ;; modification, are permitted provided that the following conditions are met:
@@ -30,7 +30,6 @@
 (setq package-selected-packages
   '(multi-term
     smart-tabs-mode
-    ;;fill-column-indicator
     undo-tree
     delight
     puppet-mode
@@ -38,6 +37,9 @@
     rust-mode
     tide
     company))
+(unless (fboundp 'display-fill-column-indicator-mode)
+  (nconc package-selected-packages
+         '(fill-column-indicator)))
 
 (unless (cl-every #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -45,10 +47,8 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-(let ((default-directory "~/.emacs.d/lisp/"))
-  (normal-top-level-add-subdirs-to-load-path))
-(require 'multi-term)
-(require 'fill-column-indicator)
+;;(let ((default-directory "~/.emacs.d/lisp/"))
+;;  (normal-top-level-add-subdirs-to-load-path))
 
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.
@@ -198,6 +198,10 @@ Ignores CHAR at point."
                         (concat "PATH=" realpath ":" (getenv "PATH"))
                         (concat "NPM_CONFIG_PREFIX=" realpath))))
     (setq tide-node-executable (concat realpath "/bin/node"))))
+
+;; Define fci-mode alias that I'm used to using
+(if (fboundp 'display-fill-column-indicator-mode)
+    (defalias 'fci-mode 'display-fill-column-indicator-mode))
 
 (if (file-readable-p "~/.emacs.d/site.el")
     (load "~/.emacs.d/site.el"))
