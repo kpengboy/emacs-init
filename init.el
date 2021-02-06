@@ -36,7 +36,8 @@
     multi-web-mode
     rust-mode
     tide
-    company))
+    company
+    jsonnet-mode))
 (unless (fboundp 'display-fill-column-indicator-mode)
   (nconc package-selected-packages
          '(fill-column-indicator)))
