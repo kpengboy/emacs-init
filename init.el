@@ -37,7 +37,8 @@
     rust-mode
     tide
     company
-    jsonnet-mode))
+    jsonnet-mode
+    go-mode))
 (unless (fboundp 'display-fill-column-indicator-mode)
   (nconc package-selected-packages
          '(fill-column-indicator)))
