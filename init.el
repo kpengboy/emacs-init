@@ -1,4 +1,4 @@
-;; Copyright (c) 2014-2021 Kevin Peng and contributors
+;; Copyright (c) 2014-2022 Kevin Peng and contributors
 ;;
 ;; Redistribution and use in source and binary forms, with or without
 ;; modification, are permitted provided that the following conditions are met:
@@ -204,6 +204,3 @@ Ignores CHAR at point."
 ;; Define fci-mode alias that I'm used to using
 (if (fboundp 'display-fill-column-indicator-mode)
     (defalias 'fci-mode 'display-fill-column-indicator-mode))
-
-(if (file-readable-p "~/.emacs.d/site.el")
-    (load "~/.emacs.d/site.el"))
