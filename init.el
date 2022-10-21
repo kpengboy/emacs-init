@@ -204,3 +204,11 @@ Ignores CHAR at point."
 ;; Define fci-mode alias that I'm used to using
 (if (fboundp 'display-fill-column-indicator-mode)
     (defalias 'fci-mode 'display-fill-column-indicator-mode))
+
+;; Make the background color white. On kevin-laptop it is gray by default
+;; and unhelpfully the same color as the active region
+(defun my-set-background (frame)
+  (if (display-graphic-p (frame-terminal frame))
+      (set-face-background 'default "white")))
+(add-hook 'window-setup-hook
+          (lambda () (my-set-background (selected-frame))))
