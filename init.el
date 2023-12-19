@@ -1,4 +1,4 @@
-;; Copyright (c) 2014-2022 Kevin Peng and contributors
+;; Copyright (c) 2014-2023 Kevin Peng and contributors
 ;;
 ;; Redistribution and use in source and binary forms, with or without
 ;; modification, are permitted provided that the following conditions are met:
@@ -38,7 +38,8 @@
     tide
     company
     jsonnet-mode
-    go-mode))
+    go-mode
+    eglot))
 (unless (fboundp 'display-fill-column-indicator-mode)
   (nconc package-selected-packages
          '(fill-column-indicator)))
@@ -212,3 +213,9 @@ Ignores CHAR at point."
       (set-face-background 'default "white")))
 (add-hook 'window-setup-hook
           (lambda () (my-set-background (selected-frame))))
+
+;; Do not show inlays in eglot by default, but do enable company-mode
+(add-hook 'eglot-managed-mode-hook
+          (lambda ()
+            (eglot-inlay-hints-mode -1)
+            (company-mode +1)))
