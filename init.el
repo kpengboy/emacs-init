@@ -33,7 +33,6 @@
     undo-tree
     delight
     puppet-mode
-    multi-web-mode
     rust-mode
     tide
     company
@@ -164,16 +163,6 @@ Ignores CHAR at point."
 ;; Use undo-tree everywhere, and don't have it pollute the mode line
 (delight 'undo-tree-mode nil 'undo-tree)
 (global-undo-tree-mode)
-
-;; Use multi-web-mode
-(setq mweb-default-major-mode 'html-mode)
-(setq mweb-tags
-      '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-        (js-mode  "<script[^>]*>" "</script>")
-        (css-mode "<style[^>]*>" "</style>")))
-(setq mweb-filename-extensions
-      '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
-(multi-web-global-mode 1)
 
 ;; I type M-x make too often, so I gave up trying to fight it
 (defalias 'make 'compile)
