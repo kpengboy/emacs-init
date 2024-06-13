@@ -1,4 +1,4 @@
-;; Copyright (c) 2014-2023 Kevin Peng and contributors
+;; Copyright (c) 2014-2024 Kevin Peng and contributors
 ;;
 ;; Redistribution and use in source and binary forms, with or without
 ;; modification, are permitted provided that the following conditions are met:
@@ -29,7 +29,7 @@
 
 (setq package-selected-packages
   '(multi-term
-    smart-tabs-mode
+    ;;smart-tabs-mode
     undo-tree
     delight
     puppet-mode
@@ -103,17 +103,17 @@ Ignores CHAR at point."
 
 ;; C/C++ customization
 (setq c-default-style "stroustrup")
-;; Enable smart tabs in c-mode and c++-mode when the file/directory local
-;; variable `use-smart-tabs` is t
-(defvar-local use-smart-tabs nil)
-(add-hook 'hack-local-variables-hook
-          (lambda ()
-            (if (and (memq major-mode '(c-mode c++-mode))
-                     use-smart-tabs)
-                (progn
-                  (smart-tabs-mode-enable)
-                  (smart-tabs-advice c-indent-line c-basic-offset)
-                  (smart-tabs-advice c-indent-region c-basic-offset)))))
+;; ;; Enable smart tabs in c-mode and c++-mode when the file/directory local
+;; ;; variable `use-smart-tabs` is t
+;; (defvar-local use-smart-tabs nil)
+;; (add-hook 'hack-local-variables-hook
+;;           (lambda ()
+;;             (if (and (memq major-mode '(c-mode c++-mode))
+;;                      use-smart-tabs)
+;;                 (progn
+;;                   (smart-tabs-mode-enable)
+;;                   (smart-tabs-advice c-indent-line c-basic-offset)
+;;                   (smart-tabs-advice c-indent-region c-basic-offset)))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
