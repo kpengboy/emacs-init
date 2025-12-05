@@ -1,4 +1,4 @@
-;; Copyright (c) 2014-2024 Kevin Peng and contributors
+;; Copyright (c) 2014-2025 Kevin Peng and contributors
 ;;
 ;; Redistribution and use in source and binary forms, with or without
 ;; modification, are permitted provided that the following conditions are met:
@@ -163,6 +163,8 @@ Ignores CHAR at point."
 ;; Use undo-tree everywhere, and don't have it pollute the mode line
 (delight 'undo-tree-mode nil 'undo-tree)
 (global-undo-tree-mode)
+;; Disable buggy undo-tree in region
+(setq undo-tree-enable-undo-in-region nil)
 
 ;; I type M-x make too often, so I gave up trying to fight it
 (defalias 'make 'compile)
