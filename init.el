@@ -1,4 +1,4 @@
-;; Copyright (c) 2014-2025 Kevin Peng and contributors
+;; Copyright (c) 2014-2026 Kevin Peng and contributors
 ;;
 ;; Redistribution and use in source and binary forms, with or without
 ;; modification, are permitted provided that the following conditions are met:
@@ -210,3 +210,6 @@ Ignores CHAR at point."
           (lambda ()
             (eglot-inlay-hints-mode -1)
             (company-mode +1)))
+
+;; Don't save undo-tree history to disk, I don't like the file garbage
+(setq undo-tree-auto-save-history nil)
